@@ -11,7 +11,7 @@ function successToast(msg) {
 }
 
 // 创建axios实例
-//第一个接口
+// 第一个接口
 const service = axios.create({
   baseURL: `${process.env.REACT_APP_BASE_URL || ''}api`, // api 的 base_url
   timeout: 26000 // 请求超时时间

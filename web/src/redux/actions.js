@@ -7,7 +7,7 @@ import {
 } from './../api/users'
 import { reqUserList, reqChatMsgList, reqReadMsg } from './../api/chat'
 import { setToken } from '../utils/auth'
-//注册异步action
+// 注册异步action
 import {
   AUTH_SUCCESS,
   RECEIVE_USER,
@@ -29,7 +29,7 @@ const read_Msg = ({ count, from, to }) => ({
   data: { count, from, to }
 })
 
-//消息列表
+// 消息列表
 const reveiveMsgList = ({ users, chatMsgs }) => ({
   type: RECEIVE_MSG_LIST,
   data: { users, chatMsgs }

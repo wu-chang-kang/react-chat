@@ -35,7 +35,7 @@ function user(state = initUser, action) {
 
 const initUserList = []
 
-//产生userList状态的state
+// 产生userList状态的state
 function userList(state = initUserList, action) {
   switch (action.type) {
     case RECEIVE_USER_LIST:
@@ -46,8 +46,8 @@ function userList(state = initUserList, action) {
 }
 
 const initChat = {
-  users: {}, //所有用户信息的对象，属性名为id
-  chatMsgs: [] //当前用户所有相关的msg数组
+  users: {}, // 所有用户信息的对象，属性名为id
+  chatMsgs: [] // 当前用户所有相关的msg数组
 }
 
 /**
