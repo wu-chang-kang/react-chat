@@ -10,7 +10,7 @@ router.post('/register', async (req, res) => {
   if (!username) {
     return res.status(400).send({ code: 2, msg: '请求参数有误' })
   }
-  //查找数据库
+  // 查找数据库
   const user = await User.findOne({ username })
   if (user) {
     res.status(422).send({ code: 1, msg: '此用户已存在' })
@@ -25,24 +25,24 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   const { username, password } = req.body
-  //1.根据用户名找用户
-  //因为前面默认是不取出password,这里在校验面的时候必须要取出,使用select("+passwrod")
+  // 1.根据用户名找用户
+  // 因为前面默认是不取出password,这里在校验面的时候必须要取出,使用select("+passwrod")
   const user = await User.findOne({ username }).select('+password')
 
   if (!user) {
     return res.status(422).send({ code: 1, msg: '用户名或密码错误' })
   }
-  //2.校验密码
+  // 2.校验密码
   const isValid = require('bcrypt').compareSync(password, user.password)
 
   if (!isValid) {
     return res.status(422).send({ code: 1, msg: '用户名或密码错误' })
   }
-  //3.返回token
-  //这个可以放多个数据
+  // 3.返回token
+  // 这个可以放多个数据
   // jwt.sign({ _id: user.id, id: user.id, username: user.username });
-  //因为是根据id进行查找,所以这里只放用户的id
-  //app.get得到之前在index.js里面设置的密钥
+  // 因为是根据id进行查找,所以这里只放用户的id
+  // app.get得到之前在index.js里面设置的密钥
 
   const token = jwt.sign({ _id: user._id }, req.app.get('secret'), {
     expiresIn: 60 // 1分钟

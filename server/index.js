@@ -1,11 +1,11 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-//密钥
+// 密钥
 app.set('secret', 'asdasdasdasdasfvdsgdfghgfhjghj15rt6y15t541561')
-//跨域
+// 跨域
 app.use(require('cors')())
-//post请求
+// post请求
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
